@@ -1,0 +1,77 @@
+body {
+  background-color: #daeaf1;
+}
+form {
+  padding-bottom: 30px;
+}
+h1 {
+  font-weight: 400;
+  font-size: 50px;
+  text-align: right;
+}
+
+h2,
+h3 {
+  position: relative;
+  top: -140px;
+  left: 150px;
+}
+
+h2 {
+  font-size: 40px;
+}
+h3 {
+  font-size: 25px;
+  color: #8d9195;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+a:active {
+  display: initial;
+}
+#celsius {
+  color: #212529;
+}
+#celsius:hover {
+  color: #8d9195;
+  transition: ease-in-out;
+}
+.container {
+  font-family: "Roboto Mono", monospace;
+  padding: 50px 30px;
+  margin: 20px 100px;
+  border: 1px solid #adb5bd;
+  border-radius: 0.375rem;
+}
+.weather-today {
+  padding-left: 10px;
+  max-width: 650px;
+}
+.day {
+  font-weight: 300;
+  font-size: 30px;
+}
+.col-2 {
+  text-align: center;
+}
+.weather-type {
+  font-size: 30px;
+}
+.weather-emoji {
+  font-size: 70px;
+}
+.weather-emoji-smaler {
+  font-size: 60px;
+}
+.temperature-day {
+  font-size: 25px;
+}
+.temperature-night {
+  color: #8d9195;
+}
