@@ -75,3 +75,8 @@ a:active {
 .temperature-night {
   color: #8d9195;
 }
+.footer {
+  font-family: "Roboto Mono", monospace;
+  font-size: 14px;
+  margin-left: 100px;
+}

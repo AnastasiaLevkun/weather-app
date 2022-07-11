@@ -21,104 +21,113 @@
     <title>Weather Forecast</title>
   </head>
   <body>
-    <div class="container">
-      <form id="form-enter-city">
-        <div class="row">
-          <div class="col-6">
-            <input
-              type="text"
-              placeholder="Enter the city"
-              class="form-control"
-              id="search-text-input"
-              autofocus
-            />
+    <div>
+      <div class="container">
+        <form id="form-enter-city">
+          <div class="row">
+            <div class="col-6">
+              <input
+                type="text"
+                placeholder="Enter the city"
+                class="form-control"
+                id="search-text-input"
+                autofocus
+              />
+            </div>
+            <div class="col-1">
+              <button type="submit" class="btn btn-primary" id="search-button">
+                Search
+              </button>
+            </div>
+            <div class="col-1">
+              <button
+                type="button"
+                class="btn btn-success"
+                id="current-location-button"
+              >
+                Current
+              </button>
+            </div>
           </div>
-          <div class="col-1">
-            <button type="submit" class="btn btn-primary" id="search-button">
-              Search
-            </button>
-          </div>
-          <div class="col-1">
-            <button
-              type="button"
-              class="btn btn-success"
-              id="current-location-button"
-            >
-              Current
-            </button>
-          </div>
-        </div>
-      </form>
+        </form>
 
-      <div class="weather-today">
+        <div class="weather-today">
+          <div class="row">
+            <div class="col-6">
+              <ul>
+                <li id="current-day">Monday</li>
+                <li id="current-time">22:00</li>
+              </ul>
+              <h1>Kyiv</h1>
+              <ul>
+                <li>Humidity: <span id="humidity">20</span>%</li>
+                <li>Wind: <span id="wind">10</span>km/h</li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <div class="weather-emoji">🌥️</div>
+              <div class="weather-type" id="weather-type">Sunny</div>
+              <h2>
+                <span id="current-temperature">20</span>
+                <a href="" id="celsius">°C</a>|<a href="" id="fahrenheit">°F</a>
+              </h2>
+              <h3><span id="min-temperature">20</span>°C🌙</h3>
+            </div>
+          </div>
+        </div>
         <div class="row">
-          <div class="col-6">
-            <ul>
-              <li id="current-day">Monday</li>
-              <li id="current-time">22:00</li>
-            </ul>
-            <h1>Kyiv</h1>
-            <ul>
-              <li>Humidity: <span id="humidity">20</span>%</li>
-              <li>Wind: <span id="wind">10</span>km/h</li>
-            </ul>
+          <div class="col-2">
+            <div class="day">Tue</div>
+            <div class="time">22:00</div>
+            <div class="weather-emoji-smaler">☀️</div>
+            <div class="temperature-day">20°C</div>
+            <div class="temperature-night">20°C🌙</div>
           </div>
-          <div class="col-6">
-            <div class="weather-emoji">🌥️</div>
-            <div class="weather-type" id="weather-type">Sunny</div>
-            <h2>
-              <span id="current-temperature">20</span>
-              <a href="" id="celsius">°C</a>|<a href="" id="fahrenheit">°F</a>
-            </h2>
-            <h3><span id="min-temperature">20</span>°C🌙</h3>
+          <div class="col-2">
+            <div class="day">Wed</div>
+            <div class="time">22:00</div>
+            <div class="weather-emoji-smaler">🌥️</div>
+            <div class="temperature-day">20°C</div>
+            <div class="temperature-night">20°C🌙</div>
+          </div>
+          <div class="col-2">
+            <div class="day">Thu</div>
+            <div class="time">22:00</div>
+            <div class="weather-emoji-smaler">☁️</div>
+            <div class="temperature-day">20°C</div>
+            <div class="temperature-night">20°C🌙</div>
+          </div>
+          <div class="col-2">
+            <div class="day">Fri</div>
+            <div class="time">22:00</div>
+            <div class="weather-emoji-smaler">🌧️</div>
+            <div class="temperature-day">20°C</div>
+            <div class="temperature-night">20°C🌙</div>
+          </div>
+          <div class="col-2">
+            <div class="day">Sat</div>
+            <div class="time">22:00</div>
+            <div class="weather-emoji-smaler">🌩️</div>
+            <div class="temperature-day">20°C</div>
+            <div class="temperature-night">20°C🌙</div>
+          </div>
+          <div class="col-2">
+            <div class="day">Sun</div>
+            <div class="time">22:00</div>
+            <div class="weather-emoji-smaler">🌩️</div>
+            <div class="temperature-day">20°C</div>
+            <div class="temperature-night">20°C🌙</div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-2">
-          <div class="day">Tue</div>
-          <div class="time">22:00</div>
-          <div class="weather-emoji-smaler">☀️</div>
-          <div class="temperature-day">20°C</div>
-          <div class="temperature-night">20°C🌙</div>
-        </div>
-        <div class="col-2">
-          <div class="day">Wed</div>
-          <div class="time">22:00</div>
-          <div class="weather-emoji-smaler">🌥️</div>
-          <div class="temperature-day">20°C</div>
-          <div class="temperature-night">20°C🌙</div>
-        </div>
-        <div class="col-2">
-          <div class="day">Thu</div>
-          <div class="time">22:00</div>
-          <div class="weather-emoji-smaler">☁️</div>
-          <div class="temperature-day">20°C</div>
-          <div class="temperature-night">20°C🌙</div>
-        </div>
-        <div class="col-2">
-          <div class="day">Fri</div>
-          <div class="time">22:00</div>
-          <div class="weather-emoji-smaler">🌧️</div>
-          <div class="temperature-day">20°C</div>
-          <div class="temperature-night">20°C🌙</div>
-        </div>
-        <div class="col-2">
-          <div class="day">Sat</div>
-          <div class="time">22:00</div>
-          <div class="weather-emoji-smaler">🌩️</div>
-          <div class="temperature-day">20°C</div>
-          <div class="temperature-night">20°C🌙</div>
-        </div>
-        <div class="col-2">
-          <div class="day">Sun</div>
-          <div class="time">22:00</div>
-          <div class="weather-emoji-smaler">🌩️</div>
-          <div class="temperature-day">20°C</div>
-          <div class="temperature-night">20°C🌙</div>
-        </div>
-      </div>
+      <p class="footer">
+        <a href="https://github.com/AnastasiaLevkun/weather-app"
+          >Open-sourse code</a
+        >
+        <span>by Anastasia Levkun</span>
+      </p>
     </div>
+
     <script src="src/index.js"></script>
   </body>
 </html>
