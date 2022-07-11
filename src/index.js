@@ -34,7 +34,13 @@ function formatTime(date) {
 let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = formatTime(now);
 
-function searchCity(event) {
+function search(city) {
+  let apiKey = "7eda9a879fbfa9500bfd6eee738cce64";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperarture);
+}
+
+function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#search-text-input").value;
 
@@ -45,13 +51,11 @@ function searchCity(event) {
     currentCity.innerHTML = null;
     alert("Please, type a city...");
   }
-  let apiKey = "7eda9a879fbfa9500bfd6eee738cce64";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperarture);
+  search(city);
 }
 
 let formCity = document.querySelector("#form-enter-city");
-formCity.addEventListener("submit", searchCity);
+formCity.addEventListener("submit", handleSubmit);
 
 function showTemperarture(response) {
   console.log(response.data);
@@ -132,3 +136,5 @@ function handlePosition(position) {
 }
 
 navigator.geolocation.getCurrentPosition(handlePosition);
+
+search("Kyiv");
