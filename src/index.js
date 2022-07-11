@@ -34,6 +34,39 @@ function formatTime(date) {
 let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = formatTime(now);
 
+function showTemperarture(response) {
+  document.querySelector("h1").innerHTML = response.data.name;
+  let temperature = Math.round(response.data.main.temp);
+  let temperatureElement = document.querySelector("#current-temperature");
+  temperatureElement.innerHTML = temperature;
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
+  document.querySelector("#weather-type").innerHTML =
+    response.data.weather[0].main;
+  document.querySelector("#min-temperature").innerHTML = Math.round(
+    response.data.main.temp_min
+  );
+
+  let celsius = document.querySelector("#celsius");
+  celsius.addEventListener("click", getTemperatureCelsius);
+
+  function getTemperatureCelsius(event) {
+    event.preventDefault();
+    let temperatureCelsius = document.querySelector("#current-temperature");
+    temperatureCelsius.innerHTML = temperature;
+  }
+  function getTemperatureFahrenheit(event) {
+    event.preventDefault();
+    let currentTemperatureFahrenheit = Math.floor((9 * temperature + 160) / 5);
+    let temperatureFahrenheit = document.querySelector("#current-temperature");
+    temperatureFahrenheit.innerHTML = currentTemperatureFahrenheit;
+  }
+  let fahrenheit = document.querySelector("#fahrenheit");
+  fahrenheit.addEventListener("click", getTemperatureFahrenheit);
+}
+
 function search(city) {
   let apiKey = "7eda9a879fbfa9500bfd6eee738cce64";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
@@ -57,74 +90,12 @@ function handleSubmit(event) {
 let formCity = document.querySelector("#form-enter-city");
 formCity.addEventListener("submit", handleSubmit);
 
-function showTemperarture(response) {
-  console.log(response.data);
-  document.querySelector("h1").innerHTML = response.data.name;
-  let temperature = Math.round(response.data.main.temp);
-  let temperatureElement = document.querySelector("#current-temperature");
-  temperatureElement.innerHTML = temperature;
-  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
-  document.querySelector("#wind").innerHTML = Math.round(
-    response.data.wind.speed
-  );
-  document.querySelector("#weather-type").innerHTML =
-    response.data.weather[0].main;
-
-  let celsius = document.querySelector("#celsius");
-  celsius.addEventListener("click", getTemperatureCelsius);
-
-  function getTemperatureCelsius(event) {
-    event.preventDefault();
-    let temperatureCelsius = document.querySelector("#current-temperature");
-    temperatureCelsius.innerHTML = temperature;
-  }
-  function getTemperatureFahrenheit(event) {
-    event.preventDefault();
-    let currentTemperatureFahrenheit = Math.floor((9 * temperature + 160) / 5);
-    let temperatureFahrenheit = document.querySelector("#current-temperature");
-    temperatureFahrenheit.innerHTML = currentTemperatureFahrenheit;
-  }
-  let fahrenheit = document.querySelector("#fahrenheit");
-  fahrenheit.addEventListener("click", getTemperatureFahrenheit);
+function showCurrentCity(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(handlePosition);
 }
-function currentTemperarture(response) {
-  function showCurrentCity(event) {
-    event.preventDefault();
-    console.log(response.data);
-    let currentCityName = response.data.name;
-    let currentTemperature = Math.round(response.data.main.temp);
-    let temperatureElement = document.querySelector("#current-temperature");
-    temperatureElement.innerHTML = currentTemperature;
-    let cityElement = document.querySelector("h1");
-    cityElement.innerHTML = currentCityName;
-
-    function getTemperatureCelsius(event) {
-      event.preventDefault();
-      let temperatureCelsiusNow = document.querySelector(
-        "#current-temperature"
-      );
-      temperatureCelsiusNow.innerHTML = currentTemperature;
-    }
-
-    let celsiusNow = document.querySelector("#celsius");
-    celsiusNow.addEventListener("click", getTemperatureCelsius);
-    function getTemperatureFahrenheit(event) {
-      event.preventDefault();
-      let currentTemperatureFahrenheitNow = Math.floor(
-        (9 * currentTemperature + 160) / 5
-      );
-      let temperatureFahrenheitNow = document.querySelector(
-        "#current-temperature"
-      );
-      temperatureFahrenheitNow.innerHTML = currentTemperatureFahrenheitNow;
-    }
-    let fahrenheitNow = document.querySelector("#fahrenheit");
-    fahrenheitNow.addEventListener("click", getTemperatureFahrenheit);
-  }
-
-  let CurrentCity = document.querySelector("#current-location-button");
-  CurrentCity.addEventListener("click", showCurrentCity);
-}
+let CurrentCity = document.querySelector("#current-location-button");
+CurrentCity.addEventListener("click", showCurrentCity);
 
 function handlePosition(position) {
   let lat = position.coords.latitude;
@@ -132,9 +103,7 @@ function handlePosition(position) {
   let units = "metric";
   let apiKey = "7eda9a879fbfa9500bfd6eee738cce64";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-  axios.get(apiUrl).then(currentTemperarture);
+  axios.get(apiUrl).then(showTemperarture);
 }
-
-navigator.geolocation.getCurrentPosition(handlePosition);
 
 search("Kyiv");
