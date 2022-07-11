@@ -63,6 +63,9 @@ function showTemperarture(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+  document.querySelector("#weather-type").innerHTML =
+    response.data.weather[0].main;
+
   let celsius = document.querySelector("#celsius");
   celsius.addEventListener("click", getTemperatureCelsius);
 
