@@ -54,11 +54,15 @@ let formCity = document.querySelector("#form-enter-city");
 formCity.addEventListener("submit", searchCity);
 
 function showTemperarture(response) {
+  console.log(response.data);
   document.querySelector("h1").innerHTML = response.data.name;
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temperature");
   temperatureElement.innerHTML = temperature;
-
+  document.querySelector("#humidity").innerHTML = response.data.main.humidity;
+  document.querySelector("#wind").innerHTML = Math.round(
+    response.data.wind.speed
+  );
   let celsius = document.querySelector("#celsius");
   celsius.addEventListener("click", getTemperatureCelsius);
 
