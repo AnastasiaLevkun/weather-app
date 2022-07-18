@@ -21,6 +21,7 @@ h2 {
   font-size: 40px;
 }
 h3 {
+  float: left;
   font-size: 25px;
   color: #8d9195;
 }
@@ -41,6 +42,20 @@ a:active {
 #celsius:hover {
   color: #8d9195;
   transition: ease-in-out;
+}
+#current-temperature {
+  color: rgb(33, 33, 33);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
+}
+.current-temperature-container {
+  float: left;
+}
+.temperature-container .current-temperature-container .units {
+  position: relative;
+  font-size: 27px;
+  top: -27px;
 }
 .weather-app-wrapper {
   font-family: "Roboto Mono", monospace;
