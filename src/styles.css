@@ -7,14 +7,14 @@ form {
 h1 {
   font-weight: 400;
   font-size: 50px;
-  text-align: right;
+  text-align: center;
 }
 
 h2,
 h3 {
   position: relative;
   top: -140px;
-  left: 150px;
+  left: 250px;
 }
 
 h2 {
@@ -42,16 +42,15 @@ a:active {
   color: #8d9195;
   transition: ease-in-out;
 }
-.container {
+.weather-app-wrapper {
   font-family: "Roboto Mono", monospace;
   padding: 50px 30px;
-  margin: 20px 100px;
+  margin: 20px 150px;
   border: 1px solid #adb5bd;
   border-radius: 0.375rem;
 }
 .weather-today {
   padding-left: 10px;
-  max-width: 650px;
 }
 .day {
   font-weight: 300;
@@ -78,5 +77,5 @@ a:active {
 .footer {
   font-family: "Roboto Mono", monospace;
   font-size: 14px;
-  margin-left: 100px;
+  margin-left: 150px;
 }

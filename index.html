@@ -21,8 +21,8 @@
     <title>Weather Forecast</title>
   </head>
   <body>
-    <div>
-      <div class="container">
+    <div class="container">
+      <div class="weather-app-wrapper">
         <form id="form-enter-city">
           <div class="row">
             <div class="col-6">
@@ -34,12 +34,12 @@
                 autofocus
               />
             </div>
-            <div class="col-1">
+            <div class="col-2">
               <button type="submit" class="btn btn-primary" id="search-button">
                 Search
               </button>
             </div>
-            <div class="col-1">
+            <div class="col-2">
               <button
                 type="button"
                 class="btn btn-success"
@@ -65,13 +65,17 @@
               </ul>
             </div>
             <div class="col-6">
-              <div class="weather-emoji">🌥️</div>
-              <div class="weather-type" id="weather-type">Sunny</div>
-              <h2>
-                <span id="current-temperature">20</span>
-                <a href="" id="celsius">°C</a>|<a href="" id="fahrenheit">°F</a>
-              </h2>
-              <h3><span id="min-temperature">20</span>°C🌙</h3>
+              <div class="temperature-container">
+                <div class="weather-emoji">🌥️</div>
+                <div class="weather-type" id="weather-type">Sunny</div>
+                <h2>
+                  <span id="current-temperature">20</span>
+                  <a href="" id="celsius">°C</a>|<a href="" id="fahrenheit"
+                    >°F</a
+                  >
+                </h2>
+                <h3><span id="min-temperature">20</span>°C🌙</h3>
+              </div>
             </div>
           </div>
         </div>
@@ -121,7 +125,7 @@
         </div>
       </div>
       <p class="footer">
-        <a href="https://github.com/AnastasiaLevkun/weather-app"
+        <a href="https://github.com/AnastasiaLevkun/weather-app" target="_blank"
           >Open-sourse code</a
         >
         <span>by Anastasia Levkun</span>
