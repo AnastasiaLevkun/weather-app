@@ -33,16 +33,10 @@ ul {
 a {
   text-decoration: none;
 }
-a:active {
-  display: initial;
+a:hover {
+  text-decoration: underline;
 }
-#celsius {
-  color: #212529;
-}
-#celsius:hover {
-  color: #8d9195;
-  transition: ease-in-out;
-}
+
 #current-temperature {
   color: rgb(33, 33, 33);
   font-size: 64px;
@@ -56,6 +50,15 @@ a:active {
   position: relative;
   font-size: 27px;
   top: -27px;
+}
+.temperature-container .active {
+  color: rgb(33, 33, 33);
+  cursor: default;
+  text-decoration: none;
+}
+.temperature-container .active:hover {
+  color: rgb(33, 33, 33);
+  cursor: default;
 }
 .weather-app-wrapper {
   font-family: "Roboto Mono", monospace;

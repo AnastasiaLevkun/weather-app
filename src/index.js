@@ -35,9 +35,9 @@ let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = formatTime(now);
 
 function showTemperarture(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temperature");
-  temperatureElement.innerHTML = temperature;
+  temperatureElement.innerHTML = celsiusTemperature;
   let iconElement = document.querySelector("#icon");
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
@@ -54,24 +54,32 @@ function showTemperarture(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
-
-  let celsius = document.querySelector("#celsius");
-  celsius.addEventListener("click", getTemperatureCelsius);
-
-  function getTemperatureCelsius(event) {
-    event.preventDefault();
-    let temperatureCelsius = document.querySelector("#current-temperature");
-    temperatureCelsius.innerHTML = temperature;
-  }
-  function getTemperatureFahrenheit(event) {
-    event.preventDefault();
-    let currentTemperatureFahrenheit = Math.floor((9 * temperature + 160) / 5);
-    let temperatureFahrenheit = document.querySelector("#current-temperature");
-    temperatureFahrenheit.innerHTML = currentTemperatureFahrenheit;
-  }
-  let fahrenheit = document.querySelector("#fahrenheit");
-  fahrenheit.addEventListener("click", getTemperatureFahrenheit);
 }
+
+function getTemperatureFahrenheit(event) {
+  event.preventDefault();
+  let temperatureElement = Math.floor((9 * celsiusTemperature + 160) / 5);
+  let temperatureFahrenheit = document.querySelector("#current-temperature");
+  temperatureFahrenheit.innerHTML = temperatureElement;
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
+}
+
+function getTemperatureCelsius(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temperature");
+  temperatureElement.innerHTML = celsiusTemperature;
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+}
+
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", getTemperatureCelsius);
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", getTemperatureFahrenheit);
+
+let celsiusTemperature = null;
 
 function search(city) {
   let apiKey = "7eda9a879fbfa9500bfd6eee738cce64";
