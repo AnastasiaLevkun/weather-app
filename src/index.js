@@ -35,10 +35,11 @@ let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = formatTime(now);
 
 function showTemperarture(response) {
-  document.querySelector("h1").innerHTML = response.data.name;
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temperature");
   temperatureElement.innerHTML = temperature;
+  let iconElement = document.querySelector("#icon");
+  document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
@@ -48,6 +49,11 @@ function showTemperarture(response) {
   document.querySelector("#min-temperature").innerHTML = Math.round(
     response.data.main.temp_min
   );
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 
   let celsius = document.querySelector("#celsius");
   celsius.addEventListener("click", getTemperatureCelsius);
@@ -77,7 +83,7 @@ function handleSubmit(event) {
   event.preventDefault();
   let city = document.querySelector("#search-text-input").value;
 
-  let currentCity = document.querySelector("h1");
+  let currentCity = document.querySelector("#city");
   if (city) {
     currentCity.innerHTML = city;
   } else {

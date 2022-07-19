@@ -59,10 +59,12 @@ a:active {
 }
 .weather-app-wrapper {
   font-family: "Roboto Mono", monospace;
-  padding: 50px 30px;
+  padding: 40px 40px;
   margin: 20px 150px;
-  border: 1px solid #adb5bd;
+  border: 1px solid #daeaf1;
+  box-shadow: rgba(65, 50, 100, 0.08) 0px 30px 50px;
   border-radius: 0.375rem;
+  background-color: rgb(229, 247, 255);
 }
 .weather-today {
   padding-left: 10px;
@@ -76,9 +78,6 @@ a:active {
 }
 .weather-type {
   font-size: 30px;
-}
-.weather-emoji {
-  font-size: 70px;
 }
 .weather-emoji-smaler {
   font-size: 60px;
