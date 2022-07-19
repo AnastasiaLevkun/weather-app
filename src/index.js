@@ -31,8 +31,6 @@ function formatTime(date) {
   let time = hours + ":" + min;
   return time;
 }
-let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = formatTime(now);
 
 function showTemperarture(response) {
   celsiusTemperature = Math.round(response.data.main.temp);
@@ -73,14 +71,6 @@ function getTemperatureCelsius(event) {
   fahrenheit.classList.remove("active");
 }
 
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", getTemperatureCelsius);
-
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", getTemperatureFahrenheit);
-
-let celsiusTemperature = null;
-
 function search(city) {
   let apiKey = "7eda9a879fbfa9500bfd6eee738cce64";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
@@ -101,15 +91,10 @@ function handleSubmit(event) {
   search(city);
 }
 
-let formCity = document.querySelector("#form-enter-city");
-formCity.addEventListener("submit", handleSubmit);
-
 function showCurrentCity(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(handlePosition);
 }
-let CurrentCity = document.querySelector("#current-location-button");
-CurrentCity.addEventListener("click", showCurrentCity);
 
 function handlePosition(position) {
   let lat = position.coords.latitude;
@@ -119,5 +104,22 @@ function handlePosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperarture);
 }
+
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", getTemperatureCelsius);
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", getTemperatureFahrenheit);
+
+let celsiusTemperature = null;
+
+let currentTime = document.querySelector("#current-time");
+currentTime.innerHTML = formatTime(now);
+
+let formCity = document.querySelector("#form-enter-city");
+formCity.addEventListener("submit", handleSubmit);
+
+let CurrentCity = document.querySelector("#current-location-button");
+CurrentCity.addEventListener("click", showCurrentCity);
 
 search("Kyiv");
