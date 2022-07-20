@@ -5,6 +5,7 @@ form {
   padding-bottom: 30px;
 }
 h1 {
+  margin-top: 25px;
   font-weight: 400;
   font-size: 50px;
   text-align: center;
@@ -76,8 +77,12 @@ a:hover {
   font-weight: 300;
   font-size: 30px;
 }
+.description {
+  margin-top: 50px;
+}
 .col-2 {
   text-align: center;
+  margin: 0px 15px;
 }
 .weather-type {
   font-size: 30px;

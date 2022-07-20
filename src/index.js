@@ -32,6 +32,28 @@ function formatTime(date) {
   return time;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-2">
+      <div class="day">${day}</div>
+      <div class="weather-emoji-smaler">☀️</div>
+      <div class="temperature-day">20°C</div>
+      <div class="temperature-night">20°C🌙</div>
+      </div>
+  `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemperarture(response) {
   celsiusTemperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temperature");
@@ -123,3 +145,4 @@ let CurrentCity = document.querySelector("#current-location-button");
 CurrentCity.addEventListener("click", showCurrentCity);
 
 search("Kyiv");
+displayForecast();
