@@ -57,7 +57,7 @@ function displayForecast(response) {
             forecastDay.weather[0].icon
           }@2x.png"
           alt=""
-          width="42"
+          width="70"
         />
       <div class="temperature-day">${Math.round(forecastDay.temp.max)}°C</div>
       <div class="temperature-night">${Math.round(forecastDay.temp.min)}°C</div>
@@ -97,23 +97,6 @@ function showTemperarture(response) {
   getForecast(response.data.coord);
 }
 
-function getTemperatureFahrenheit(event) {
-  event.preventDefault();
-  let temperatureElement = Math.floor((9 * celsiusTemperature + 160) / 5);
-  let temperatureFahrenheit = document.querySelector("#current-temperature");
-  temperatureFahrenheit.innerHTML = temperatureElement;
-  celsius.classList.remove("active");
-  fahrenheit.classList.add("active");
-}
-
-function getTemperatureCelsius(event) {
-  event.preventDefault();
-  let temperatureElement = document.querySelector("#current-temperature");
-  temperatureElement.innerHTML = celsiusTemperature;
-  celsius.classList.add("active");
-  fahrenheit.classList.remove("active");
-}
-
 function search(city) {
   let apiKey = "7eda9a879fbfa9500bfd6eee738cce64";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric`;
@@ -147,14 +130,6 @@ function handlePosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperarture);
 }
-
-let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", getTemperatureCelsius);
-
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", getTemperatureFahrenheit);
-
-let celsiusTemperature = null;
 
 let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = formatTime(now);
