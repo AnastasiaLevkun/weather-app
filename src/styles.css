@@ -80,12 +80,13 @@ a:hover {
 .description {
   margin-top: 50px;
 }
-.col-2 {
+.forecast {
   text-align: center;
-  margin: 0px 15px;
+  margin: 20px 15px;
 }
 .weather-type {
   font-size: 30px;
+  margin-top: 15px;
 }
 .weather-emoji-smaler {
   font-size: 60px;

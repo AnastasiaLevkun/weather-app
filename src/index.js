@@ -32,7 +32,8 @@ function formatTime(date) {
   return time;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Wed", "Thu", "Fri", "Sat", "Sun"];
@@ -42,7 +43,7 @@ function displayForecast() {
     forecastHTML =
       forecastHTML +
       `
-      <div class="col-2">
+      <div class="col-2 forecast">
       <div class="day">${day}</div>
       <div class="weather-emoji-smaler">☀️</div>
       <div class="temperature-day">20°C</div>
@@ -52,6 +53,12 @@ function displayForecast() {
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "7eda9a879fbfa9500bfd6eee738cce64";
+  apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showTemperarture(response) {
@@ -66,14 +73,14 @@ function showTemperarture(response) {
   );
   document.querySelector("#weather-type").innerHTML =
     response.data.weather[0].main;
-  document.querySelector("#min-temperature").innerHTML = Math.round(
-    response.data.main.temp_min
-  );
+
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord);
 }
 
 function getTemperatureFahrenheit(event) {
@@ -145,4 +152,3 @@ let CurrentCity = document.querySelector("#current-location-button");
 CurrentCity.addEventListener("click", showCurrentCity);
 
 search("Kyiv");
-displayForecast();
